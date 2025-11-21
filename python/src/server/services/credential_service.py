@@ -17,6 +17,7 @@ from typing import Any
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from postgrest.exceptions import APIError
 from supabase import Client, create_client
 
 from ..config.logfire_config import get_logger
@@ -153,6 +154,22 @@ class CredentialService:
 
             return credentials
 
+        except APIError as e:
+            error_payload = e.args[0] if e.args else {}
+            error_code = error_payload.get("code")
+            error_message = error_payload.get("message", str(e))
+
+            if error_code == "PGRST205" and "archon_settings" in error_message:
+                guidance = (
+                    "Database bootstrap required: the 'archon_settings' table was not found.\n"
+                    "Run migration/complete_setup.sql in your Supabase project's SQL editor, "
+                    "then restart Archon so credentials can be loaded."
+                )
+                logger.error(guidance)
+                raise RuntimeError(guidance) from e
+
+            logger.error(f"Error loading credentials: {error_message}")
+            raise
         except Exception as e:
             logger.error(f"Error loading credentials: {e}")
             raise
