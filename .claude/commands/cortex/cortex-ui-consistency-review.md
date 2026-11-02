@@ -5,7 +5,7 @@ allowed-tools: Read, Grep, Glob, Write, Bash
 thinking: auto
 ---
 
-# UI Consistency Review for Archon
+# UI Consistency Review for Cortex
 
 **Review scope**: $ARGUMENTS
 

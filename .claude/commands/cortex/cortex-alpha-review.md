@@ -1,11 +1,11 @@
 ---
-description: Perform comprehensive code review for Archon V2 Beta, this command will save a report to `code-review.md`.
+description: Perform comprehensive code review for Cortex V2 Beta, this command will save a report to `code-review.md`.
 argument-hint: <PR number, branch name, file path, or leave empty for staged changes>
 allowed-tools: Bash(*), Read, Grep, LS, Write
 thinking: auto
 ---
 
-# Code Review for Archon V2 Beta
+# Code Review for Cortex V2 Beta
 
 **Review scope**: $ARGUMENTS
 
@@ -13,7 +13,7 @@ I'll perform a comprehensive code review and generate a report saved to the root
 
 ## Context
 
-You're reviewing code for Archon V2 Beta, which uses:
+You're reviewing code for Cortex V2 Beta, which uses:
 
 - **Frontend**: React + TypeScript + Vite + TailwindCSS
 - **Backend**: Python 3.12+ with FastAPI, PydanticAI, Supabase
@@ -153,9 +153,9 @@ Verify:
 
 **Frontend TypeScript files:**
 
-- `archon-ui-main/src/components/` - React components
-- `archon-ui-main/src/services/` - API integration
-- `archon-ui-main/src/hooks/` - Custom hooks
+- `cortex-ui/src/components/` - React components
+- `cortex-ui/src/services/` - API integration
+- `cortex-ui/src/hooks/` - Custom hooks
 
 **Configuration:**
 
@@ -225,11 +225,11 @@ gh pr view $PR_NUMBER --json files
 # Run quality checks
 cd python && ruff check --fix
 cd python && mypy src/
-cd archon-ui-main && npm run lint
+cd cortex-ui && npm run lint
 
 # Run tests
 cd python && uv run pytest
-cd archon-ui-main && npm test
+cd cortex-ui && npm test
 ```
 
 Remember: Focus on impact and maintainability. Good code review helps the team ship better code, not just find problems. Be constructive and specific with feedback.

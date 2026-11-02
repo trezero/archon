@@ -1,7 +1,7 @@
 ---
 name: prime
 description: |
-  Prime Claude Code with deep context for a specific part of the Archon codebase.
+  Prime Claude Code with deep context for a specific part of the Cortex codebase.
 
   Usage: /prime "<service>" "<special focus>"
   Examples:
@@ -11,7 +11,7 @@ description: |
 argument-hint: <service> <Specific focus>
 ---
 
-You're about to work on the Archon V2 Beta codebase. This is a microservices-based knowledge management system with MCP integration. Here's what you need to know:
+You're about to work on the Cortex V2 Beta codebase. This is a microservices-based knowledge management system with MCP integration. Here's what you need to know:
 
 ## Today's Focus area
 
@@ -28,7 +28,7 @@ If you discover something you need to look deeper at or imports from files you n
 ### Frontend (port 3737) - React + TypeScript + Vite
 
 ```
-archon-ui-main/
+cortex-ui/
 ├── src/
 │   ├── App.tsx                    # Main app component with routing and providers
 │   ├── index.tsx                  # React entry point with theme and settings
@@ -110,9 +110,9 @@ python/src/agents/
 
 Key files to consider:
 
-- `archon-ui-main/src/App.tsx` - Main app structure and routing
-- `archon-ui-main/src/services/knowledgeBaseService.ts` - API call patterns
-- `archon-ui-main/src/services/socketIOService.ts` - Real-time events
+- `cortex-ui/src/App.tsx` - Main app structure and routing
+- `cortex-ui/src/services/knowledgeBaseService.ts` - API call patterns
+- `cortex-ui/src/services/socketIOService.ts` - Real-time events
 
 ### When working on Backend
 
@@ -150,7 +150,7 @@ Key files to consider:
 Key files to consider:
 
 - `python/src/server/services/projects/task_service.py` - Task management
-- `archon-ui-main/src/components/project-tasks/TaskBoardView.tsx` - Kanban UI
+- `cortex-ui/src/components/project-tasks/TaskBoardView.tsx` - Kanban UI
 
 ### When working on Agents
 

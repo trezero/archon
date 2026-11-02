@@ -17,6 +17,7 @@ from typing import Any
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from httpx import HTTPError, RemoteProtocolError
 from postgrest.exceptions import APIError
 from supabase import Client, create_client
 
@@ -170,6 +171,23 @@ class CredentialService:
 
             logger.error(f"Error loading credentials: {error_message}")
             raise
+        except RemoteProtocolError as e:
+            supabase_url = os.getenv("SUPABASE_URL", "<unset>")
+            guidance = (
+                "Unable to reach Supabase — the HTTP connection was closed before sending a response.\n"
+                "Current SUPABASE_URL="
+                f"{supabase_url}. If you're using local Supabase, ensure it's running and "
+                "that the URL uses http://host.docker.internal:8000 (not https). For cloud Supabase, "
+                "verify network connectivity and that the URL is correct."
+            )
+            logger.error(guidance)
+            raise RuntimeError(guidance) from e
+        except HTTPError as e:
+            supabase_url = os.getenv("SUPABASE_URL", "<unset>")
+            guidance = (
+                "Failed to contact Supabase via HTTP.") + " Current SUPABASE_URL=" + supabase_url
+            logger.error(guidance)
+            raise RuntimeError(guidance) from e
         except Exception as e:
             logger.error(f"Error loading credentials: {e}")
             raise

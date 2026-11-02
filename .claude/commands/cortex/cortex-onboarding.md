@@ -1,17 +1,17 @@
 ---
-name: archon-onboarding
+name: cortex-onboarding
 description: |
-  Onboard new developers to the Archon codebase with a comprehensive overview and first contribution guidance.
+  Onboard new developers to the Cortex codebase with a comprehensive overview and first contribution guidance.
 
-  Usage: /archon-onboarding
+  Usage: /cortex-onboarding
 argument-hint: none
 ---
 
-You are helping a new developer get up and running with the Archon V2 Beta project! Your goal is to provide them with a personalized onboarding experience.
+You are helping a new developer get up and running with the Cortex V2 Beta project! Your goal is to provide them with a personalized onboarding experience.
 
-## What is Archon?
+## What is Cortex?
 
-Archon is a centralized knowledge base for AI coding assistants. It enables Claude Code, Cursor, Windsurf, and other AI tools to access your documentation, perform smart searches, and manage tasks - all through a unified interface.
+Cortex is a centralized knowledge base for AI coding assistants. It enables Claude Code, Cursor, Windsurf, and other AI tools to access your documentation, perform smart searches, and manage tasks - all through a unified interface.
 
 Its powered by a **Model Context Protocol (MCP) server**
 
@@ -55,7 +55,7 @@ First, read the README.md file to understand the setup process, then guide the u
 
 Ask the user to choose their focus area. Present these options clearly and wait for their response:
 
-"Which area of the Archon codebase would you like to explore first?"
+"Which area of the Cortex codebase would you like to explore first?"
 
 1. **Frontend (React/TypeScript)** - If you enjoy UI/UX work
 2. **Backend API (Python/FastAPI)** - If you like building robust APIs
@@ -79,7 +79,7 @@ Your report to the user should include:
 
 **If the user chose Frontend:**
 
-- Start with `archon-ui-main/src/pages/KnowledgeBasePage.tsx`
+- Start with `cortex-ui/src/pages/KnowledgeBasePage.tsx`
 - Look at how it uses `services/knowledgeBaseService.ts`
 - Take a deep dive into the frontend architecture and UI components
 - Identify a potential issue that the user can easily fix and suggest a solution

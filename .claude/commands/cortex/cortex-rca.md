@@ -1,19 +1,19 @@
 ---
-description: Generate Root Cause Analysis report for Archon V2 Beta issues
+description: Generate Root Cause Analysis report for Cortex V2 Beta issues
 argument-hint: <issue description or error message>
 allowed-tools: Bash(*), Read, Grep, LS, Write
 thinking: auto
 ---
 
-# Root Cause Analysis for Archon V2 Beta
+# Root Cause Analysis for Cortex V2 Beta
 
 **Issue to investigate**: $ARGUMENTS
 
 investigate this issue systematically and generate an RCA report saved to `RCA.md` in the project root.
 
-## Context About Archon
+## Context About Cortex
 
-You're working with Archon V2 Beta, a microservices-based AI knowledge management system:
+You're working with Cortex V2 Beta, a microservices-based AI knowledge management system:
 
 - **Frontend**: React + TypeScript on port 3737
 - **Main Server**: FastAPI + Socket.IO on port 8181
@@ -104,14 +104,14 @@ Think hard about where to look, there is some guidance below that you can follow
 
 - `python/src/server/main.py` - Main server
 - `python/src/mcp/server.py` - MCP server
-- `archon-ui-main/src/main.tsx` - Frontend
+- `cortex-ui/src/main.tsx` - Frontend
 
 **Common problem areas:**
 
 - `python/src/server/services/credentials_service.py` - Must initialize first
 - `python/src/server/services/supabase_service.py` - Database connections
 - `python/src/server/socketio_manager.py` - Real-time events
-- `archon-ui-main/src/services/` - Frontend API calls
+- `cortex-ui/src/services/` - Frontend API calls
 
 ## Report Structure
 
@@ -183,7 +183,7 @@ curl http://localhost:8181/health
 curl http://localhost:8051/health
 
 # Database test
-docker-compose exec archon-server python -c "from src.server.services.supabase_service import SupabaseService; print(SupabaseService.health_check())"
+docker-compose exec cortex-server python -c "from src.server.services.supabase_service import SupabaseService; print(SupabaseService.health_check())"
 
 # Resource usage
 docker stats --no-stream
